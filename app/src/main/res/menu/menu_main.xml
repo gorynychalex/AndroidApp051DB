@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu tools:context=".MainActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/action_add"
+        android:orderInCategory="100"
+        android:title="Добавить"
+        android:showAsAction="always"
+        />
+    <item
+        android:id="@+id/action_exit"
+        android:orderInCategory="100"
+        android:title="Выход"
+        />
+
+
+</menu>
