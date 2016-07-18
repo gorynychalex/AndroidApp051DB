@@ -18,8 +18,31 @@
         <activity
             android:theme="@style/Theme.AppCompat.Dialog"
             android:name=".EditActivity">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.EDIT.EditActivity">
 
+                </action>
+            </intent-filter>
         </activity>
+        <!--Объявление сервиса и наделение полномочиями того, кто будет сервис вызывать -->
+        <service android:name=".MyService"
+            android:permission="android.permission.BIND_REMOTEVIEWS">
+
+        </service>
+        <receiver android:name=".MyWidget">
+            <intent-filter>
+                <action
+                    android:name="android.appwidget.action.APPWIDGET_UPDATE">
+
+                </action>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_metadata">
+
+            </meta-data>
+        </receiver>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package ru.dvfu.mrcpk.popovich.androidapp051db;
 
+import android.app.LoaderManager;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -15,10 +16,13 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 public class MainActivity extends AppCompatActivity {
+
+    //Объявление статических переменных
     private static final int CM_EDIT_ID = 1;
     private static final int CM_DELETE_ID = 2;
     private static final int REQUEST_CODE_EDIT = 1;
     private static final int REQUEST_CODE_ADD = 2;
+    //Объявление переменных
     ListView listView;
     DB db;
     SimpleCursorAdapter simpleCursorAdapter;
@@ -26,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     AdapterView.AdapterContextMenuInfo acmi;
     Intent intent;
     ContentValues contentValues;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("myLog", "Cursor = " + cursor.getPosition() + ", ID = " + cursor.getInt(0) + " , " + DB.TABLE_MAIN_FIRSTNAME+ " = " + cursor.getString(1) + " , " + DB.TABLE_MAIN_LASTNAME + " = " + cursor.getString(2));
             } while (cursor.moveToNext());
         }
-
+//        getLoaderManager().initLoader(0, null, this);
 //        db.close();
         registerForContextMenu(listView);
     }
@@ -164,8 +169,7 @@ public class MainActivity extends AppCompatActivity {
                     contentValues.put(DB.TABLE_MAIN_PHONENUM,data.getExtras().getString(DB.TABLE_MAIN_PHONENUM));
                     contentValues.put(DB.TABLE_MAIN_EMAIL,data.getExtras().getString(DB.TABLE_MAIN_EMAIL));
                     db.addRec(contentValues);
-                    simpleCursorAdapter.notifyDataSetChanged();
-                    listView.setAdapter(simpleCursorAdapter);
+                    cursor.requery();
                     break;
             }
         }

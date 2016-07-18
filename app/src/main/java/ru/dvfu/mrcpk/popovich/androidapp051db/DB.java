@@ -86,12 +86,14 @@ public class DB {
         public void onCreate(SQLiteDatabase db) {
             db.execSQL(DATABASE_CREATE);
 
+            // Первичное заполнение данных
             ContentValues contentValues = new ContentValues();
-            for (int i = 1; i < 2; i++) {
-                contentValues.put(TABLE_MAIN_FIRSTNAME, "Ivan");
-                contentValues.put(TABLE_MAIN_LASTNAME, "Ivanov");
-                db.insert(TABLE_MAIN, null, contentValues);
-            }
+            contentValues.put(TABLE_MAIN_FIRSTNAME, "Alexey");
+            contentValues.put(TABLE_MAIN_LASTNAME, "Popovich");
+            contentValues.put(TABLE_MAIN_PHONENUM, "+79140682226");
+            contentValues.put(TABLE_MAIN_EMAIL, "gorynychalex@gmail.com");
+            db.insert(TABLE_MAIN, null, contentValues);
+
         }
 
         @Override

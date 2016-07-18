@@ -7,6 +7,7 @@
         android:id="@+id/action_add"
         android:orderInCategory="100"
         android:title="Добавить"
+        android:icon="@mipmap/ic_launcher"
         android:showAsAction="always"
         />
     <item
